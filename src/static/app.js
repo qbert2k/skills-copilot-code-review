@@ -865,4 +865,22 @@ document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   initializeFilters();
   fetchActivities();
+  fetchAnnouncement();
 });
+
+async function fetchAnnouncement() {
+  const banner = document.querySelector(".announcement-banner");
+  const announcementText = document.getElementById("announcement-text");
+  try {
+    const response = await fetch("/announcements/active");
+    if (response.ok) {
+      const announcement = await response.json();
+      if (announcement && announcement.enabled) {
+        announcementText.textContent = announcement.message;
+        banner.classList.remove("hidden");
+      }
+    }
+  } catch (error) {
+    console.error("Failed to load announcement:", error);
+  }
+}
