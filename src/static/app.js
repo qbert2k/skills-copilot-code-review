@@ -875,7 +875,7 @@ async function fetchAnnouncement() {
     const response = await fetch("/announcements/active");
     if (response.ok) {
       const announcement = await response.json();
-      if (announcement && announcement.enabled) {
+      if (announcement) {
         announcementText.textContent = announcement.message;
         banner.classList.remove("hidden");
       }

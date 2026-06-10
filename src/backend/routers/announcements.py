@@ -20,7 +20,7 @@ def get_active_announcement() -> Optional[Dict[str, Any]]:
     if not announcement:
         return None
     return {
-        "id": announcement["_id"],
+        "id": str(announcement["_id"]),
         "message": announcement["message"],
         "enabled": announcement["enabled"]
     }
