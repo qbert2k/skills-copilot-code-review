@@ -53,12 +53,18 @@ def _parse_date(field_name: str, value: Optional[str], required: bool = False) -
         ) from exc
 
 
-def _require_authenticated_user(teacher_username: str) -> Dict[str, Any]:
+def _require_authenticated_user(teacher_username: Optional[str]) -> Dict[str, Any]:
+    if not teacher_username:
+        raise HTTPException(
+            status_code=401,
+            detail="Authentication required for this action",
+        )
+
     teacher = teachers_collection.find_one({"_id": teacher_username})
     if not teacher:
         raise HTTPException(
             status_code=401,
-            detail="You must be signed in to manage announcements.",
+            detail="Invalid teacher credentials",
         )
     return teacher
 
