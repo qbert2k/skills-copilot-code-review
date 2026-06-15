@@ -964,9 +964,11 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <div class="announcement-card-top">
           <span class="announcement-status ${announcement.is_active ? "live" : ""} ${announcement.enabled ? "enabled" : "disabled"}">${announcementStatusLabel(announcement)}</span>
-          <span class="announcement-meta">Expires ${formatAnnouncementDate(
+          <span class="announcement-meta">${
             announcement.expiration_date
-          )}</span>
+              ? "Expires " + formatAnnouncementDate(announcement.expiration_date)
+              : "No expiration date"
+          }</span>
         </div>
         <p class="announcement-card-message">${escapeHtml(
           announcement.message
