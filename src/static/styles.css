@@ -30,6 +30,15 @@
   --error-light: #ffebee;
   --info: #0c5460;
   --info-light: #d1ecf1;
+
+  /* Component tokens */
+  --announcement-banner-bg: #1b5e20;
+  --announcement-banner-fg: #ffffff;
+
+  /* Spacing scale */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
 }
 
 * {
@@ -456,6 +465,19 @@ button {
   display: none !important;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* More compact no-results message */
 .no-results {
   text-align: center;
@@ -663,4 +685,16 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.announcement-banner {
+  background-color: var(--announcement-banner-bg);
+  color: var(--announcement-banner-fg);
+  text-align: center;
+  padding: var(--spacing-md);
+  font-weight: bold;
+}
+
+.announcement-icon {
+  margin-right: var(--spacing-sm);
 }
