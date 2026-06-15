@@ -1052,10 +1052,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     announcementsModal.classList.remove("hidden");
+    announcementsModal.setAttribute("aria-hidden", "false");
+    if (manageAnnouncementsButton) {
+      manageAnnouncementsButton.setAttribute("aria-expanded", "true");
+    }
     setTimeout(() => {
       announcementsModal.classList.add("show");
     }, 10);
-    announcementManagerMessage.classList.add("hidden");
     fetchAnnouncements(selectedAnnouncementId);
   }
 
