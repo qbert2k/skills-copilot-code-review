@@ -1068,10 +1068,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     announcementsModal.classList.remove("show");
+    announcementsModal.setAttribute("aria-hidden", "true");
+    if (manageAnnouncementsButton) {
+      manageAnnouncementsButton.setAttribute("aria-expanded", "false");
+    }
     setTimeout(() => {
       announcementsModal.classList.add("hidden");
     }, 300);
-  }
 
   async function deleteAnnouncement(announcementId, announcementMessage) {
     showConfirmationDialog(
