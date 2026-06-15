@@ -226,6 +226,6 @@ initial_announcements = [
         "message": "Activity registration is open until the end of the month. Don't lose your spot!",
         "enabled": True,
         "start_date": None,
-        "expiration_date": date(2026, 7, 15).isoformat(),
+        "expiration_date": date(2099, 12, 31).isoformat(),
     }
 ]
