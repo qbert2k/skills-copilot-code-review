@@ -26,6 +26,15 @@
             <span class="user-icon">👤</span>
             <span>Login</span>
           </button>
+          <button
+            id="manage-announcements-button"
+            class="icon-button hidden"
+            aria-haspopup="dialog"
+            aria-controls="announcements-modal"
+          >
+            <span class="user-icon">📣</span>
+            <span>Announcements</span>
+          </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
             <button id="logout-button">Logout</button>
@@ -136,6 +145,65 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcement Manager Modal -->
+    <div id="announcements-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Announcement manager">
+      <div class="modal-content modal-content-wide">
+        <button class="close-announcements-modal" aria-label="Close announcement manager">
+          &times;
+        </button>
+        <div class="announcements-modal-header">
+          <div>
+            <p class="section-kicker">Announcement Center</p>
+            <h3>Manage announcements</h3>
+            <p class="modal-subtitle">Create, schedule, and retire the banner message shown to everyone on the site.</p>
+          </div>
+          <button id="new-announcement-button" class="secondary-button" type="button">
+            New announcement
+          </button>
+        </div>
+        <div class="announcements-manager-layout">
+          <section class="announcement-library" aria-label="Existing announcements">
+            <div id="announcements-list" class="announcement-list"></div>
+          </section>
+          <section class="announcement-editor" aria-label="Announcement editor">
+            <div id="announcement-manager-message" class="hidden message"></div>
+            <form id="announcement-form">
+              <input type="hidden" id="announcement-id" />
+              <div class="form-group">
+                <label for="announcement-message">Message</label>
+                <textarea
+                  id="announcement-message"
+                  rows="6"
+                  required
+                  placeholder="Write the announcement that students will see on the banner"
+                ></textarea>
+              </div>
+              <div class="date-grid">
+                <div class="form-group">
+                  <label for="announcement-start-date">Start date <span class="field-hint">optional</span></label>
+                  <input type="date" id="announcement-start-date" />
+                </div>
+                <div class="form-group">
+                  <label for="announcement-expiration-date">Expiration date <span class="field-hint">required</span></label>
+                  <input type="date" id="announcement-expiration-date" required />
+                </div>
+              </div>
+              <label class="checkbox-row">
+                <input type="checkbox" id="announcement-enabled" checked />
+                <span>Enabled</span>
+              </label>
+              <div class="editor-actions">
+                <button id="reset-announcement-button" class="secondary-button" type="button">
+                  Reset
+                </button>
+                <button id="save-announcement-button" type="submit">Add announcement</button>
+              </div>
+            </form>
+          </section>
+        </div>
       </div>
     </div>
 

@@ -6,6 +6,8 @@ A super simple FastAPI application that allows students to view and sign up for 
 
 - View all available extracurricular activities
 - Sign up for activities
+- Read the active announcement banner
+- Manage announcements from the signed-in teacher UI
 
 ## Getting Started
 
@@ -31,6 +33,11 @@ A super simple FastAPI application that allows students to view and sign up for 
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| GET    | `/announcements/active`                                           | Get the currently active announcement banner                       |
+| GET    | `/announcements?teacher_username=teacher`                         | List all announcements for the management dialog                   |
+| POST   | `/announcements?teacher_username=teacher`                         | Create a new announcement                                          |
+| PUT    | `/announcements/{announcement_id}?teacher_username=teacher`       | Update an announcement                                             |
+| DELETE | `/announcements/{announcement_id}?teacher_username=teacher`       | Delete an announcement                                             |
 
 ## Data Model
 
@@ -47,4 +54,11 @@ The application uses a simple data model with meaningful identifiers:
    - Name
    - Grade level
 
-All data is stored in memory, which means data will be reset when the server restarts.
+Activity, teacher, and announcement data are stored in MongoDB. The sample seed data is inserted automatically when the collections are empty.
+
+## Announcement Rules
+
+- Announcements are database-driven and displayed from the active record in MongoDB.
+- Start dates are optional.
+- Expiration dates are required.
+- Only signed-in users can open the announcement manager and edit records.

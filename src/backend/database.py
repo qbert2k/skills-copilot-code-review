@@ -2,6 +2,8 @@
 MongoDB database configuration and setup for Mergington High School API
 """
 
+from datetime import date
+
 from pymongo import MongoClient
 from argon2 import PasswordHasher, exceptions as argon2_exceptions
 
@@ -222,6 +224,8 @@ initial_announcements = [
     {
         "id": "main",
         "message": "Activity registration is open until the end of the month. Don't lose your spot!",
-        "enabled": True
+        "enabled": True,
+        "start_date": None,
+        "expiration_date": date(2099, 12, 31).isoformat(),
     }
 ]
